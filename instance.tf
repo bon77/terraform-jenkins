@@ -5,6 +5,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
   key_name               = aws_key_pair.jenkins_keypair.key_name
   user_data              = "${file("install_jenkins.sh")}"
+  depends_on             = [aws_internet_gateway.main-gw]
   tags = {
     Name = "Jenkins"
   }
