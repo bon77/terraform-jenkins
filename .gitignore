@@ -32,3 +32,13 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore plans
+*.zip
+
+# Ignore lock file for me here
+.terraform.lock.hcl
+
+# Ignore ssh-keys
+jenkins
+jenkins.pub
