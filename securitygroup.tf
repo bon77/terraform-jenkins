@@ -32,3 +32,28 @@ resource "aws_security_group" "jenkins_sg" {
   }
 }
 
+resource "aws_security_group" "jenkins_internal" {
+  vpc_id      = aws_vpc.main.id
+  name        = "jenkins_internal"
+  description = "Allow all internal Traffic"
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    description      = "Allow all internal traffic"
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = [aws_vpc.main.cidr_block]
+  }
+
+  tags = {
+    Name = "Jenkins Internal"
+  }
+}
