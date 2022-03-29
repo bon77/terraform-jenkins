@@ -1,11 +1,6 @@
 variable "aws_region" {
   description = "AWS region to create resources"
-  default     = "us-east-1"
-}
-
-variable "vpc_id" {
-  description = "VPC ID"
-  default     = "demo-vpc"
+  default     = "eu-west-1"
 }
 
 variable "cidr_block" {
@@ -13,7 +8,17 @@ variable "cidr_block" {
   default     = "0.0.0.0/0"
 }
 
-variable "key_name" {
-  description = "ssh key file name for jenkins"
-  default     = "jenkins.rsa"
+variable "azs" {
+  description = "Availability zones for the region"
+  default = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+}
+
+variable "PATH_TO_PRIVATE_KEY" {
+  description = "local path to ssh private key for AWS"
+  default = "ssh-keys/jenkins.rsa"
+}
+
+variable "PATH_TO_PUBLIC_KEY" {
+  description = "local path to ssh public key for AWS"
+  default = "ssh-keys/jenkins.rsa.pub"
 }

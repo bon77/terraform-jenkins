@@ -40,5 +40,4 @@ terraform.rc
 .terraform.lock.hcl
 
 # Ignore ssh-keys
-jenkins
-jenkins.pub
+ssh-keys/*
