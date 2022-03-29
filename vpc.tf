@@ -22,17 +22,6 @@ resource "aws_subnet" "main-public-1" {
   }
 }
 
-resource "aws_subnet" "main-private-1" {
-  vpc_id                  = aws_vpc.main.id
-  cidr_block              = "10.0.4.0/24"
-  map_public_ip_on_launch = "false"
-  availability_zone       = "ap-northeast-1a"
-
-  tags = {
-    Name = "main-private-1"
-  }
-}
-
 # Internet GW
 resource "aws_internet_gateway" "main-gw" {
   vpc_id = aws_vpc.main.id
@@ -46,24 +35,12 @@ resource "aws_internet_gateway" "main-gw" {
 resource "aws_route_table" "main-public" {
   vpc_id = aws_vpc.main.id
   route {
-    cidr_block = var.cidr_block
+    cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.main-gw.id
   }
 
   tags = {
     Name = "main-public-1"
-  }
-}
-
-resource "aws_route_table" "main-private" {
-  vpc_id = aws_vpc.main.id
-  route {
-    cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.nat-gw.id
-  }
-
-  tags = {
-    Name = "main-private-1"
   }
 }
 
