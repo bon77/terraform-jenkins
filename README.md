@@ -8,7 +8,7 @@ Add the following variables:
   - aws_region: The regions you want to run in
     - for example *aws_region = "ap-northeast-1"*
   - cidr_block: From where you want to allow access (network of IP)
-   - for examole *cidr_block = "123.456.78.001/32"*
+    - for example *cidr_block = "123.456.78.001/32"*
   - azs: Availability zones
     - for example *azs = [ "ap-northeast-1a", "ap-northeast-1c", "ap-northeast-1d"]*
 
